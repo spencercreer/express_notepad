@@ -22,7 +22,6 @@ class Storage {
             return parsedNotes;
         });
     }
-    // addNotes
     saveNote(postNote){
         return this.getNotes().then(allNotes => [...allNotes, postNote])
         .then((updatedNotes) => this.write(updatedNotes))

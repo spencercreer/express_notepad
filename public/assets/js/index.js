@@ -53,6 +53,7 @@ const deleteNote = (id) =>
     },
   });
 
+// render active not or blank if empty
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
