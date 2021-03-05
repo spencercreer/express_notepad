@@ -12,30 +12,30 @@ router.get('/notes', (req, res) => {
 });
 
 // post method
+router.post('/notes', (req, res) => {
+    let postNote = req.body;
 
-// router.post('/notes', (req, res) => {
-//     Storage
-//     .addNote()
-//         .then((notes) => {
-//             return res.json(notes);
-//         })
-//         .catch((err) => 
-//             res.status(500).json(err));
-// });
+    storage
+    .saveNote(postNote)
+        .then(() => {
+            return res.json(postNote);
+        })
+        .catch((err) => 
+            res.status(500).json(err));
+});
 
 // remove method
+router.delete('/notes', (req, res) => {
+    // is this correct?
+    let deletedNote = req;
 
-// router.delete('/notes', (req, res) => {
-//     Storage
-//     .removeNote()
-//         .then((notes) => {
-//             return res.json(notes);
-//         })
-//         .catch((err) => 
-//             res.status(500).json(err));
-//     // .addNotes;
-//     // .removeNotes;
-
-// });
+    storage
+    .deleteNote(deletedNote)
+        .then(() => {
+            return deletedNote;
+        })
+        .catch((err) => 
+            res.status(500).json(err));
+});
 
 module.exports = router;

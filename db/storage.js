@@ -9,7 +9,7 @@ class Storage {
         return readFileAsync('db/db.json', 'utf8');
     }
     write(note){
-        return writeFileAsync('db/db.json', json.stringify(note));
+        return writeFileAsync('db/db.json', JSON.stringify(note));
     }
     getNotes(){
         return this.read().then((notes) => {
@@ -19,18 +19,19 @@ class Storage {
             } catch (err) {
                 parsedNotes = [];
             }
-            console.log(parsedNotes)
             return parsedNotes;
         });
     }
     // addNotes
-    addNotes(){
-        return this.write().then((note) => {
-
-
-        })
+    saveNote(postNote){
+        return this.getNotes().then(allNotes => [...allNotes, postNote])
+        .then((updatedNotes) => this.write(updatedNotes))
+        .then(() => postNote);
     }
-    // removeNote
+    // deleteNote
+    deleteNote(deletedNote){
+        return deletedNote;
+    }
 }
 
 module.exports = new Storage;
