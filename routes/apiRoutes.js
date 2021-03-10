@@ -13,12 +13,11 @@ router.get('/notes', (req, res) => {
 
 // post method
 router.post('/notes', (req, res) => {
-    let postNote = req.body;
-
+    
     storage
-    .saveNote(postNote)
-        .then(() => {
-            return res.json(postNote);
+    .saveNote(req.body)
+        .then((postNote) => {
+            res.json(postNote);
         })
         .catch((err) => 
             res.status(500).json(err));

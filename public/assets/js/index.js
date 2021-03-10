@@ -1,11 +1,9 @@
-// declare variables
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-// if url path is /notes set variables
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -27,7 +25,6 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-// handler request note methods
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -53,7 +50,6 @@ const deleteNote = (id) =>
     },
   });
 
-// render active not or blank if empty
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -68,7 +64,6 @@ const renderActiveNote = () => {
   }
 };
 
-// Save Note button click
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -105,10 +100,11 @@ const handleNoteView = (e) => {
   renderActiveNote();
 };
 
-// Sets the activeNote to an empty object and allows the user to enter a new note
+// Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
+  window.location.reload();
 };
 
 const handleRenderSaveBtn = () => {
