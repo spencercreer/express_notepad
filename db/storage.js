@@ -23,23 +23,25 @@ class Storage {
         });
     }
     saveNote(postNote){
-        // return this.getNotes().then(allNotes => [...allNotes, postNote])
-        // .then((updatedNotes) => this.write(updatedNotes))
-        // .then(() => postNote);
 
-        this.getNotes().then(allNotes => [...allNotes, postNote])
+        return this.getNotes().then(allNotes => [...allNotes, postNote])
         .then((updatedNotes) => {
-            let id = 0;
+            let id = 1;
             for (let i = 0; i < updatedNotes.length; i++) {
                 updatedNotes[i].id = id++;
             }
             return this.write(updatedNotes);
-        });
+        })
+        .then(() => postNote);
+        
     }
     // deleteNote
-    // deleteNote(deletedNote){
-    //     return deletedNote;
-    // }
+    deleteNote(id){
+        return this.getNotes().then((notes) => {
+            const filteredNotes = notes.filter((note) => note.id !== parseInt(id));
+            return this.write(filteredNotes);
+        })
+    }
 }
 
 module.exports = new Storage;

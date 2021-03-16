@@ -24,14 +24,14 @@ router.post('/notes', (req, res) => {
 });
 
 // remove method
-router.delete('/notes', (req, res) => {
+router.delete('/notes/:id', (req, res) => {
     // is this correct?
-    let deletedNote = req;
+    let deletedNote = req.params.id;
 
     storage
     .deleteNote(deletedNote)
         .then(() => {
-            return deletedNote;
+            return res.json(deletedNote);
         })
         .catch((err) => 
             res.status(500).json(err));
