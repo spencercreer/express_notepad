@@ -15,14 +15,14 @@ An Express.js server application for taking notes. This application allows a use
 * [Contact](#contact)
 
 ## Links
-Published URL: [TBD](TBD)
+Published URL: [https://spencers-express-app.herokuapp.com/](https://spencers-express-app.herokuapp.com/)
 
 Repository: [https://github.com/spencercreer/express_notepad](https://github.com/spencercreer/express_notepad)
 
 
 ## Animation
 The following animation demonstrates the application functionality:
-![Express Notepad animation](TBD)
+![Express Notepad animation](./public/assets/images/express_app.gif)
 ## Instructions
 When the user clicks the "Get Started" button, the user is taken to the notepad. A save button is displayed when the user enters a note title and text. When the user clicks the save button, the note is saved in the db.json file and added to the list. If the user selects a note from the list, then this note is displayed in the active note.
 ## Installation
